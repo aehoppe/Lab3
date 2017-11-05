@@ -1,0 +1,20 @@
+Work Plan
+William Derksen, Alexander Hoppe, Samuel Meyers, Taylor Sheneman
+
+Week 1
+
+- RTL for all required instructions in the set (30 mins)
+- Block Diagram of Single Cycle CPU (2 Hr) (by Wednesday night office hours)
+- Begin Verilog Implementation (4 Hr)
+
+Friday
+~~~~~~~~~~~~~~~~~~
+Saturday
+- Finish Verilog Implementation
+
+- Testing in parts (3 Hr)
+- Developing Assembly Code (3 Hr)
++ (stretch goal) Draw pipelined design block diagram (2 Hr)
++ Implement Pipeline (2 Hr)
++ Test pipelined design (should just be modifying exising ones)
+- Report writing (2 Hr)
