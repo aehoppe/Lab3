@@ -11,6 +11,7 @@ Load Word - 23
 ```
 R[rt] = M[R[rs]+SignExtImm]
 ```
+
 ### `sw`
 I-type
 Store Word - 43
@@ -39,13 +40,35 @@ Jump and Link - 3
 R[31] = PC+8;
 PC = JumpAddr
 ```
+
 ### `bne`
+I-type
+Branch On Not Equal - 5
+```
+if(R[rs]!=R[rt])
+  PC=PC+4+BranchAddr
+```
 
 ### `xori`
+I-type
+Xor immediate - 14
+```
+R[rt] = R[rs] | ZeroExtImm
+```
 
 ### `addi`
+I-type
+Add Immediate - 8
+```
+R[rt] = R[rs] + SignExtImm
+```
 
 ### `add`
+R-Type Funct 8
+Add - 0
+```
+R[rd] = R[rs] + R[rt]
+```
 
 ### `sub`
 R-type Funct 22
