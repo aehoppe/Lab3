@@ -1,15 +1,14 @@
-// //4 bit ALU module
-// `define NOR nor #20
-// `define AND and #30
-// `define OR or #30
-// `define XOR xor #30
-
-// `include "BitSlice.v"
-// `include "ALUcontrolLUT.v"
+//------------------------------------------------------------------------------
+// Arithmetic Logic Unit
+//   2 inputs of width: 32 bits
+//   input: 3 bit control signal
+//   output width: 32 bits
+//   output: carryout, overflow, zero flags
+//------------------------------------------------------------------------------
 
 module ALU
 (
-    output reg [31:0] out,
+    output reg[31:0] out,
     output reg carryout, ovf, zero,
     input signed[31:0] a,
     input signed[31:0] b,
