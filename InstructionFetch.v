@@ -6,7 +6,7 @@
 module InstructionFetch
 (
   output[31:0] Instr,
-  output[9:0] PC,
+  output[31:0] PC,
   input[25:0] TargetAddr,
   input[15:0] Imm16,
   input zero,
