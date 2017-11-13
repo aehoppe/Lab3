@@ -1,30 +1,38 @@
 `include "regfile-dependencies/register32.v"
 `include "signExtend.v"
+`include "alu.v"
+`include "InstructionMemory.v"
 
-module InstructionFetchUnit
+module InstructionFetch
 (
   output[31:0] Instr,
+  output[9:0] PC,
   input[25:0] TargetAddr,
-  input Imm16,
+  input[15:0] Imm16,
   input zero,
   input Branch,
-  input Da,
+  input[31:0] Da,
   input jr,
-  input j,
+  input jl,
   input clk
 );
   //Jumping
-  wire[31:0] regOut;
-  wire[31:0] currAddr;
-  register32 PC (regOut, currAddr, 1'b1, clk);
+  wire[31:0] newAddr;
   wire[31:0] jumpaddr;
-  assign jumpaddr = {currAddr[31:28],TargetAddr, 2'b00};
-  wire nextAddr;
-
-  //Branching and continuing
+  wire[31:0] addunit;
+  wire[31:0] added;
+  wire[31:0] same_branch_addr;
+  wire[31:0] signextimm;
   wire muxsig1;
-  assign muxsig1 = (not zero && Branch);
-  wire add;
-  SignExtend(Imm16, 1'b0)
-  assign
+  //wire nextAddr;
+  register32 PC_module (PC, newAddr, 1'b1, clk);
+  signExtend IF_SE (signextimm, Imm16, 1'b0);
+  InstructionMemory InstMem(Instr, {PC[31:2], 2'b00}, clk);
+  assign jumpaddr = {PC[31:28],TargetAddr, 2'b00};
+  assign muxsig1 = (!zero && Branch);
+  assign addunit = muxsig1 ? signextimm : 32'b0;
+  assign added = addunit + PC + 1;
+  assign same_branch_addr = jr ? Da : added;
+  assign newAddr = jl ? jumpaddr : same_branch_addr;
+
 endmodule
