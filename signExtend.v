@@ -7,9 +7,9 @@
 
 module signExtend
 (
+  output[31:0] out,
   input[15:0] imm16,
-  input zeroExtend,
-  output[31:0] out
+  input zeroExtend
 );
 
   assign out = zeroExtend ? {16'b0, imm16} : {{16{imm16[15]}}, imm16};
