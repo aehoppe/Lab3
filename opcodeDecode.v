@@ -3,8 +3,6 @@
 //-----------------------------------------------------------------------------
 
 module opcodeDecode(
-  input       [5:0]  opcode,
-  input       [5:0]  funct,
   output reg         reg_wr,
   output reg         reg_dst,
   output reg         ALU_src,
@@ -15,7 +13,9 @@ module opcodeDecode(
   output reg         jal,
   output reg         jr,
   output reg         branch,
-  output reg         zero_ext
+  output reg         zero_ext,
+  input       [5:0]  opcode,
+  input       [5:0]  funct
   );
 
   // Define opcode localparams
