@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 int partition(int *arr, int start, int end) {
   int pivot = arr[end];
   int i = start - 1;
@@ -27,7 +29,7 @@ int main() {
   int arr[] = { 9, 5, 3, 6, 2, 8, 7, 3, 1, 4 };
   quicksort(arr, 0, 9);
   for (int i = 0; i < 10; i++) {
-    printf(arr[i]);
+    printf("%d\n", arr[i]);
   }
   return 0;
 }
