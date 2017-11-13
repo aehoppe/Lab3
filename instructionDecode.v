@@ -5,7 +5,6 @@
 `include "opcodeDecode.v"
 
 module instructionDecode(
-  input   [31:0]    instruction,
   output  [25:0]    target_address,
   output  [4:0]     rs,
   output  [4:0]     rt,
@@ -21,7 +20,8 @@ module instructionDecode(
   output            jal,
   output            jr,
   output            branch,
-  output            zero_ext
+  output            zero_ext,
+  input   [31:0]    instruction
   );
 
   wire [5:0] opcode, funct;
@@ -41,8 +41,6 @@ module instructionDecode(
 
   // Instantiate LUT for opcodes
   opcodeDecode op_decoder(
-    .opcode(opcode),
-    .funct(funct),
     .reg_wr(reg_wr),
     .reg_dst(reg_dst),
     .ALU_src(ALU_src),
@@ -53,7 +51,9 @@ module instructionDecode(
     .jal(jal),
     .jr(jr),
     .branch(branch),
-    .zero_ext(zero_ext)
+    .zero_ext(zero_ext),
+    .opcode(opcode),
+    .funct(funct)
     );
 
 endmodule
