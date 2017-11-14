@@ -1,6 +1,5 @@
 `include "regfile-dependencies/register32.v"
 `include "signExtend.v"
-`include "alu.v"
 `include "instructionMemory.v"
 
 module instructionFetch
