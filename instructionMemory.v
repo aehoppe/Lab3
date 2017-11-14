@@ -1,4 +1,4 @@
-module InstructionMemory
+module instructionMemory
 (
   output[31:0]  DataOut,
   //input regWE, //for actual memory

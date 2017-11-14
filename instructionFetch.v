@@ -1,9 +1,9 @@
 `include "regfile-dependencies/register32.v"
 `include "signExtend.v"
 `include "alu.v"
-`include "InstructionMemory.v"
+`include "instructionMemory.v"
 
-module InstructionFetch
+module instructionFetch
 (
   output[31:0] Instr,
   output[31:0] PC,
@@ -27,7 +27,7 @@ module InstructionFetch
   //wire nextAddr;
   register32 PC_module (PC, newAddr, 1'b1, clk);
   signExtend IF_SE (signextimm, Imm16, 1'b0);
-  InstructionMemory InstMem(Instr, {PC[31:2], 2'b00}, clk);
+  instructionMemory InstMem(Instr, {PC[31:2], 2'b00}, clk);
   assign jumpaddr = {PC[31:28],TargetAddr, 2'b00};
   assign muxsig1 = (!zero && Branch);
   assign addunit = muxsig1 ? signextimm : 32'b0;
