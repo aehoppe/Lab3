@@ -59,12 +59,12 @@ module dataPath(
   ALU alu(ALU_out, carryout, ovf, zero, A, B, ALU_ctrl);
 
   // Set up data memory
-  dataMemory #(32,2**32,32) data_mem (mem_dout, ALU_out, mem_wr, Db, clk);
+  dataMemory #(32,32'h4000,32) data_mem (mem_dout, ALU_out, mem_wr, Db, clk);
 
   // Set up load/result mux
   assign writeback = mem_to_reg ? mem_dout : ALU_out;
 
-  
+
 
 
 
