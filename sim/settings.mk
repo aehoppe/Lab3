@@ -3,7 +3,7 @@
 ## Assembly settings
 
 # Assembly program (minus .asm extension)
-PROGRAM := fib_func
+PROGRAM := quicksort
 
 # Memory image(s) to create from the assembly program
 MEMDUMP := $(PROGRAM).text.hex
