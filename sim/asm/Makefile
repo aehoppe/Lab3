@@ -3,7 +3,7 @@
 # Get PROGRAM and MEMDUMP from project settings
 include ../settings.mk
 
-MARS_PATH := ../../Mars4_5.jar
+MARS_PATH := ~/Documents/CompArch/mips/Mars4_5.jar
 MARS_OPTS := a  mc CompactTextAtZero
 MARS      := java -jar $(MARS_PATH) $(MARS_OPTS)
 
