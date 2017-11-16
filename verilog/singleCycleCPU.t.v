@@ -48,7 +48,7 @@ module singleCycleCPUTestHarness();
   	// self-checking test cases based on your CPU and program and
   	// automatically report the results.
   	$display("Time | PC       | Instruction");
-  	repeat(3) begin
+  	repeat(10) begin
           $display("%4t | %h | %h", $time, cpu.PC, cpu.instruction); #20 ;
           end
   	$display("... more execution (see waveform)");
