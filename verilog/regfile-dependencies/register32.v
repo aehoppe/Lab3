@@ -8,6 +8,9 @@ input[31:0] d,
 input wrenable,
 input	clk
 );
+  initial begin
+    q = 32'b0;
+  end
 
   always @(posedge clk) begin
     if(wrenable) begin
