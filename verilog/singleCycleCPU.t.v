@@ -33,14 +33,14 @@ module singleCycleCPUTestHarness();
 
 
     // Load CPU memory from (assembly) dump file
-    $readmemh("quicksort.text.hex", cpu.data_memory, 0, 32'h0FFC);
-    $readmemh("quicksort.text.data", cpu.data_memory, 32'h2000, 32'h3FFF);
+    $readmemh("quicksort.text.hex", cpu.data_mem.memory, 0, 32'h0FFC);
+    $readmemh("quicksort.text.data", cpu.data_mem.memory, 32'h2000, 32'h3FFF);
     // Alternate: Explicitly state which array element range to read into
     //$readmemh("mymem.hex", memory, 10, 80);
 
     // Dump waveforms to file
     // Note: arrays (e.g. memory) are not dumped by default
-    $dumpfile(quicksort.vcd);
+    $dumpfile("quicksort.vcd");
     $dumpvars();
 
     // Display a few cycles just for quick checking
@@ -49,7 +49,7 @@ module singleCycleCPUTestHarness();
   	// automatically report the results.
   	$display("Time | PC       | Instruction");
   	repeat(3) begin
-          $display("%4t | %h | %h", $time, cpu.PC_A, cpu.INS_A); #20 ;
+          $display("%4t | %h | %h", $time, cpu.PC, cpu.instruction); #20 ;
           end
   	$display("... more execution (see waveform)");
 
