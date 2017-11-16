@@ -8,6 +8,7 @@
 `include "dataPath.v"
 `include "instructionFetch.v"
 `include "instructionDecode.v"
+`include "dataMemory.v"
 
 module singleCycleCPU (
   input clk
@@ -15,7 +16,7 @@ module singleCycleCPU (
 
   wire            carryout, ovf, zero;
   wire  [31:0]    Da;
-  wire  [29:0]    PC;
+  wire  [31:0]    PC;
   wire  [25:0]    target_address;
   wire  [4:0]     rs;
   wire  [4:0]     rt;
@@ -34,8 +35,13 @@ module singleCycleCPU (
   wire            zero_ext;
   wire  [31:0]    instruction;
 
+  wire  [31:0]    ALU_out;
+  wire  [31:0]    Db;
+  wire  [31:0]    mem_dout;
+  wire  [31:0]    InstrAddr;
+
   instructionFetch instr_fetch(
-      instruction,
+      //instruction,
       PC,
       target_address,
       imm16,
@@ -70,6 +76,9 @@ module singleCycleCPU (
   dataPath data_path(
       carryout, ovf, zero,
       Da,
+      ALU_out,
+      Db,
+      mem_dout,
       PC,
       rs,
       rt,
@@ -79,7 +88,7 @@ module singleCycleCPU (
       reg_dst,
       ALU_src,
       ALU_ctrl,
-      mem_wr,
+      //mem_wr,
       mem_to_reg,
       jl,
       jal,
@@ -88,6 +97,16 @@ module singleCycleCPU (
       zero_ext,
       clk
     );
+    dataMemory #(.addresswidth(32),.depth(32'h4000),.width(32))
+    data_mem (
+      .dataOut(mem_dout),
+      .InstrOut(instruction),
+      .address(ALU_out),
+      .InstrAddr(PC),
+      .writeEnable(mem_wr),
+      .dataIn(Db),
+      .clk(clk)
+      );
 
 
 

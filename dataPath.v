@@ -3,14 +3,17 @@
 //------------------------------------------------------------------------------
 
 `include "alu.v"
-`include "dataMemory.v"
+//`include "dataMemory.v"
 `include "regfile.v"
 `include "signExtend.v"
 
 module dataPath(
   output            carryout, ovf, zero,
   output  [31:0]    Da,
-  input   [29:0]    PC,
+  output  [31:0]    ALU_out,
+  output  [31:0]    Db,
+  input   [31:0]    mem_dout,
+  input   [31:0]    PC,
   input   [4:0]     Rs,
   input   [4:0]     Rt,
   input   [4:0]     Rd,
@@ -19,7 +22,7 @@ module dataPath(
   input             reg_dst,
   input             ALU_src,
   input   [2:0]     ALU_ctrl,
-  input             mem_wr,
+  //input             mem_wr,
   input             mem_to_reg,
   input             jl,
   input             jal,
@@ -35,7 +38,7 @@ module dataPath(
   wire  [31:0]  Dw;               // Output of writeback/PC+8 mux for JAL
   wire  [31:0]  se_ze_imm16;      // Output of sign/zero extender
   wire  [31:0]  A, B;             // Inputs to ALU
-  wire  [31:0]  ALU_out;          // Output of ALU
+  //wire  [31:0]  ALU_out;          // Output of ALU
   wire  [31:0]  writeback;        // Output of mem_to_reg mux
   wire  [31:0]  Db;               // Output of regfile Db
   wire  [31:0]  mem_dout;         // Output of memory
@@ -59,8 +62,7 @@ module dataPath(
   ALU alu(ALU_out, carryout, ovf, zero, A, B, ALU_ctrl);
 
   // Set up data memory
-  dataMemory #(32,32'h4000,32) data_mem (mem_dout, ALU_out, mem_wr, Db, clk);
-
+  //dataMemory #(32,32'h4000,32) data_mem (mem_dout, ALU_out, mem_wr, Db, clk);
   // Set up load/result mux
   assign writeback = mem_to_reg ? mem_dout : ALU_out;
 
