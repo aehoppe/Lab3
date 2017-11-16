@@ -14,11 +14,7 @@ module singleCycleCPUTestHarness();
   always #10 clk = !clk;
 
   // Instantiate fake CPU
-  fake_cpu cpu(.clk(clk), .reset(reset));
-
-
-  reg [1023:0] mem_fn;
-  reg [1023:0] dump_fn;
+  singleCycleCPU cpu(.clk(clk));
 
   // Test sequence
   initial begin
@@ -37,14 +33,14 @@ module singleCycleCPUTestHarness();
 
 
     // Load CPU memory from (assembly) dump file
-    $readmemh("quicksort.text.hex", cpu.memory, 0, 32'h0FFC);
-    $readmemh("quicksort.text.data", cpu.memory, 32'h2000, 32'h3FFF);
+    $readmemh("quicksort.text.hex", cpu.data_memory, 0, 32'h0FFC);
+    $readmemh("quicksort.text.data", cpu.data_memory, 32'h2000, 32'h3FFF);
     // Alternate: Explicitly state which array element range to read into
     //$readmemh("mymem.hex", memory, 10, 80);
 
     // Dump waveforms to file
     // Note: arrays (e.g. memory) are not dumped by default
-    $dumpfile(dump_fn);
+    $dumpfile(quicksort.vcd);
     $dumpvars();
 
     // Display a few cycles just for quick checking
