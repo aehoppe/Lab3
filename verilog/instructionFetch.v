@@ -1,4 +1,4 @@
-//`include "regfile-dependencies/register32.v"
+`include "regfile-dependencies/register32.v"
 //`include "signExtend.v"
 //`include "instructionMemory.v"
 
