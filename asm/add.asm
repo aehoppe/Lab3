@@ -1,5 +1,7 @@
 # most basic test function for MIPS reduced Instantiate
 
+nop
+addi $t0, $zero, 0
 addi $t0, $zero, 1
 addi $t0, $zero, 2
 addi $t0, $zero, 3

@@ -1,25 +1,27 @@
 [*]
 [*] GTKWave Analyzer v3.3.66 (w)1999-2015 BSI
-[*] Fri Nov 17 00:39:09 2017
+[*] Fri Nov 17 05:06:51 2017
 [*]
-[dumpfile] "/home/aehoppe/Documents/CompArch/Lab3/quicksort.vcd"
-[dumpfile_mtime] "Fri Nov 17 00:26:36 2017"
-[dumpfile_size] 33166
-[savefile] "/home/aehoppe/Documents/CompArch/Lab3/filters/singleCycleCPU.gtkw"
+[dumpfile] "/home/aehoppe/Documents/CompArch/Lab3/add.vcd"
+[dumpfile_mtime] "Fri Nov 17 04:54:22 2017"
+[dumpfile_size] 33127
+[savefile] "/home/aehoppe/Documents/CompArch/Lab3/filters/singleCycleCPU-add.gtkw"
 [timestart] 0
 [size] 1920 1021
-[pos] -33 -33
-*-5.644512 10 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] -1 -1
+*-4.000000 50 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] singleCycleCPUTestHarness.
 [treeopen] singleCycleCPUTestHarness.cpu.
 [sst_width] 229
 [signals_width] 190
 [sst_expanded] 1
 [sst_vpaned_height] 286
+@28
+singleCycleCPUTestHarness.cpu.clk
 @22
 singleCycleCPUTestHarness.cpu.PC[31:0]
-@4023
-^>1 /home/aehoppe/Documents/CompArch/mips-dasm/mips-dasm-filter
+@4022
+^>1 /home/aehoppe/Documents/CompArch/Lab3/filters/../../mips-dasm/mips-dasm-filter
 singleCycleCPUTestHarness.cpu.instruction[31:0]
 @2022
 ^1 /home/aehoppe/Documents/CompArch/Lab3/filters/mips-opcodes.filter
@@ -33,7 +35,16 @@ singleCycleCPUTestHarness.cpu.instr_decode.rt[4:0]
 ^3 /home/aehoppe/Documents/CompArch/Lab3/filters/mips-regs.filter
 singleCycleCPUTestHarness.cpu.instr_decode.rd[4:0]
 @22
-singleCycleCPUTestHarness.cpu.instr_decode.target_address[25:0]
 singleCycleCPUTestHarness.cpu.instr_decode.imm16[15:0]
+singleCycleCPUTestHarness.cpu.instr_decode.target_address[25:0]
+singleCycleCPUTestHarness.cpu.Da[31:0]
+singleCycleCPUTestHarness.cpu.data_path.A[31:0]
+singleCycleCPUTestHarness.cpu.Db[31:0]
+@23
+singleCycleCPUTestHarness.cpu.data_path.B[31:0]
+@22
+singleCycleCPUTestHarness.cpu.data_path.ALU_out[31:0]
+@28
+singleCycleCPUTestHarness.cpu.data_path.ALU_src
 [pattern_trace] 1
 [pattern_trace] 0
