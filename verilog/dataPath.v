@@ -47,7 +47,7 @@ module dataPath(
   assign Aw = jal ? 5'd31 : dest_reg;
 
   // Set up jal link register mux
-  assign Dw = jal ? ((PC << 2) + 32'd8) : writeback;
+  assign Dw = jal ? (PC + 32'd2) : writeback;
 
   // Set up regfile
   regfile reg_file(Da, Db, Dw, Rs, Rt, Aw, reg_wr, clk);

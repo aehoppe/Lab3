@@ -30,7 +30,7 @@ module instructionFetch
   register32 PC_module (PC, newAddr, 1'b1, clk);
   signExtend IF_SE (signextimm, Imm16, 1'b0);
   //instructionMemory InstMem(Instr, {PC[31:2], 2'b00}, clk);
-  assign jumpaddr = {PC[29:26],TargetAddr, 2'b00};
+  assign jumpaddr = {PC[29:26],TargetAddr};
   assign muxsig1 = (!zero && Branch);
   assign addunit = muxsig1 ? signextimm : 32'b0;
   assign added = addunit + PC + 1;
