@@ -6,7 +6,7 @@
 //   1 synchronous, positive edge triggered write port
 //------------------------------------------------------------------------------
 
-`include "regfile-dependencies/register32.v"
+`include "regfile-dependencies/negRegister32.v"
 `include "regfile-dependencies/register32zero.v"
 `include "regfile-dependencies/decoders.v"
 `include "regfile-dependencies/mux32to1by32.v"
@@ -33,7 +33,7 @@ genvar i;
   register32zero register0 (regOut[0], WriteData, regEnable[0], Clk);
   generate
   for (i = 1; i < 32; i = i+1) begin : register_generate
-    register32 register (regOut[i], WriteData, regEnable[i], Clk);
+    negRegister32 register (regOut[i], WriteData, regEnable[i], Clk);
   end
   endgenerate
 

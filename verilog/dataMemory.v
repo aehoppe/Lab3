@@ -27,7 +27,7 @@ module dataMemory
     InstrOut <= memory[InstrAddr];
   end
 
-  always @(posedge clk) begin
+  always @(negedge clk) begin
     if(writeEnable)
       memory[address] <= dataIn;
   end
