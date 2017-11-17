@@ -33,8 +33,8 @@ module singleCycleCPUTestHarness();
 
 
     // Load CPU memory from (assembly) dump file
-    $readmemh("~/Documents/CompArch/Lab3/asm/quicksort.text.hex", cpu.data_mem.memory, 0, 32'h0FFC);
-    $readmemh("~/Documents/Comparch/Lab3/asm/quicksort.data.hex", cpu.data_mem.memory, 32'h2000, 32'h3FFF);
+    $readmemh("asm/basic_testbench.text.hex", cpu.data_mem.memory, 0, 32'h0FFC);
+    $readmemh("asm/basic_testbench.data.hex", cpu.data_mem.memory, 32'h2000, 32'h3FFF);
     // Alternate: Explicitly state which array element range to read into
     //$readmemh("mymem.hex", memory, 10, 80);
 
