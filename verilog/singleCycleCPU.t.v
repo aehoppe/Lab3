@@ -10,7 +10,7 @@ module singleCycleCPUTestHarness();
   reg clk;
 
   // Clock generation
-  initial clk=1;
+  initial clk=0;
   always #10 clk = !clk;
 
   // Instantiate fake CPU

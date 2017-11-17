@@ -1,5 +1,6 @@
 # Test bench function for Lab3 reduced MIPS ISA
 # $s7 = ('tests failed') ? 1 : 0
+nop
 
 main: # Run all tests conditionally
 
@@ -35,7 +36,7 @@ sw $t1, 12($gp)
 lw $t2, 16($gp)
 lw $t3, 12($gp)
 # compare equality
-bne $t0, $t2, lw_sw_fail 
+bne $t0, $t2, lw_sw_fail
 bne $t1, $t3, lw_sw_fail
 jr $ra
 
@@ -133,7 +134,7 @@ jr $ra
 
 # End the program
 test_end:
-add $a0, $s7, $zero 
+add $a0, $s7, $zero
 addi $v0, $zero, 1
 syscall
 j jump_trap
@@ -143,4 +144,3 @@ nop
 nop
 nop
 j jump_trap
-
