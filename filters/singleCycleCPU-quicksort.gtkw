@@ -1,0 +1,39 @@
+[*]
+[*] GTKWave Analyzer v3.3.66 (w)1999-2015 BSI
+[*] Fri Nov 17 00:39:09 2017
+[*]
+[dumpfile] "/home/aehoppe/Documents/CompArch/Lab3/quicksort.vcd"
+[dumpfile_mtime] "Fri Nov 17 00:26:36 2017"
+[dumpfile_size] 33166
+[savefile] "/home/aehoppe/Documents/CompArch/Lab3/filters/singleCycleCPU.gtkw"
+[timestart] 0
+[size] 1920 1021
+[pos] -33 -33
+*-5.644512 10 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] singleCycleCPUTestHarness.
+[treeopen] singleCycleCPUTestHarness.cpu.
+[sst_width] 229
+[signals_width] 190
+[sst_expanded] 1
+[sst_vpaned_height] 286
+@22
+singleCycleCPUTestHarness.cpu.PC[31:0]
+@4023
+^>1 /home/aehoppe/Documents/CompArch/mips-dasm/mips-dasm-filter
+singleCycleCPUTestHarness.cpu.instruction[31:0]
+@2022
+^1 /home/aehoppe/Documents/CompArch/Lab3/filters/mips-opcodes.filter
+singleCycleCPUTestHarness.cpu.instr_decode.opcode[5:0]
+^2 /home/aehoppe/Documents/CompArch/Lab3/filters/mips-funct.filter
+singleCycleCPUTestHarness.cpu.instr_decode.funct[5:0]
+^3 /home/aehoppe/Documents/CompArch/Lab3/filters/mips-regs.filter
+singleCycleCPUTestHarness.cpu.instr_decode.rs[4:0]
+^3 /home/aehoppe/Documents/CompArch/Lab3/filters/mips-regs.filter
+singleCycleCPUTestHarness.cpu.instr_decode.rt[4:0]
+^3 /home/aehoppe/Documents/CompArch/Lab3/filters/mips-regs.filter
+singleCycleCPUTestHarness.cpu.instr_decode.rd[4:0]
+@22
+singleCycleCPUTestHarness.cpu.instr_decode.target_address[25:0]
+singleCycleCPUTestHarness.cpu.instr_decode.imm16[15:0]
+[pattern_trace] 1
+[pattern_trace] 0

@@ -33,14 +33,14 @@ module singleCycleCPUTestHarness();
 
 
     // Load CPU memory from (assembly) dump file
-    $readmemh("asm/basic_testbench.text.hex", cpu.data_mem.memory, 0, 32'h0FFC);
-    $readmemh("asm/basic_testbench.data.hex", cpu.data_mem.memory, 32'h2000, 32'h3FFF);
+    $readmemh("asm/add.text.hex", cpu.data_mem.memory, 0, 32'h0FFC);
+    $readmemh("asm/add.data.hex", cpu.data_mem.memory, 32'h2000, 32'h3FFF);
     // Alternate: Explicitly state which array element range to read into
     //$readmemh("mymem.hex", memory, 10, 80);
 
     // Dump waveforms to file
     // Note: arrays (e.g. memory) are not dumped by default
-    $dumpfile("basic_testbench.vcd");
+    $dumpfile("add.vcd");
     $dumpvars();
 
     // Display a few cycles just for quick checking

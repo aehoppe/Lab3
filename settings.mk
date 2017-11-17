@@ -3,7 +3,7 @@
 ## Assembly settings
 
 # Assembly program (minus .asm extension)
-PROGRAM := basic_testbench
+PROGRAM := add
 
 # Memory image(s) to create from the assembly program
 MEMDUMP := $(PROGRAM).text.hex
