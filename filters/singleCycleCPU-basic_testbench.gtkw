@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.66 (w)1999-2015 BSI
-[*] Fri Nov 17 05:06:51 2017
+[*] Fri Nov 17 06:32:08 2017
 [*]
 [dumpfile] "/home/aehoppe/Documents/CompArch/Lab3/basic_testbench.vcd"
-[dumpfile_mtime] "Fri Nov 17 04:54:22 2017"
-[dumpfile_size] 33127
+[dumpfile_mtime] "Fri Nov 17 06:29:27 2017"
+[dumpfile_size] 98766
 [savefile] "/home/aehoppe/Documents/CompArch/Lab3/filters/singleCycleCPU-basic_testbench.gtkw"
 [timestart] 0
 [size] 1920 1021
 [pos] -1 -1
-*-4.000000 50 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-4.000000 10 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] singleCycleCPUTestHarness.
 [treeopen] singleCycleCPUTestHarness.cpu.
 [sst_width] 229
@@ -18,7 +18,7 @@
 [sst_vpaned_height] 286
 @28
 singleCycleCPUTestHarness.cpu.clk
-@22
+@25
 singleCycleCPUTestHarness.cpu.PC[31:0]
 @4022
 ^>1 /home/aehoppe/Documents/CompArch/Lab3/filters/../../mips-dasm/mips-dasm-filter
@@ -40,9 +40,7 @@ singleCycleCPUTestHarness.cpu.instr_decode.target_address[25:0]
 singleCycleCPUTestHarness.cpu.Da[31:0]
 singleCycleCPUTestHarness.cpu.data_path.A[31:0]
 singleCycleCPUTestHarness.cpu.Db[31:0]
-@23
 singleCycleCPUTestHarness.cpu.data_path.B[31:0]
-@22
 singleCycleCPUTestHarness.cpu.data_path.ALU_out[31:0]
 @28
 singleCycleCPUTestHarness.cpu.data_path.ALU_src

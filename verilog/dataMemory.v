@@ -22,7 +22,7 @@ module dataMemory
 );
   reg [width-1:0] memory [depth-1:0];
 
-  always @(*) begin
+  always @(InstrAddr) begin
     dataOut <= memory[address];
     InstrOut <= memory[InstrAddr];
   end
