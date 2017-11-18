@@ -1,6 +1,7 @@
 # Test bench function for Lab3 reduced MIPS ISA
 # $s7 = ('tests failed') ? 1 : 0
 nop
+addi $gp, $zero, 0x2000
 
 main: # Run all tests conditionally
 
@@ -29,15 +30,19 @@ test_lw_sw:
 # Initialize values
 addi $t0, $zero, 30
 addi $t1, $zero, 87
+addi $t2, $zero, 4
 # store to heap
 sw $t0, 16($gp)
 sw $t1, 12($gp)
+sw $t2, 8($gp)
 # load from heap
-lw $t2, 16($gp)
-lw $t3, 12($gp)
+lw $t3, 16($gp)
+lw $t4, 12($gp)
+lw $t5, 8($gp)
 # compare equality
 bne $t0, $t2, lw_sw_fail
 bne $t1, $t3, lw_sw_fail
+bne $t2, $t6, lw_sw_fail
 jr $ra
 
 lw_sw_fail:
