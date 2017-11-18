@@ -40,9 +40,9 @@ lw $t3, 16($gp)
 lw $t4, 12($gp)
 lw $t5, 8($gp)
 # compare equality
-bne $t0, $t2, lw_sw_fail
-bne $t1, $t3, lw_sw_fail
-bne $t2, $t6, lw_sw_fail
+bne $t0, $t3, lw_sw_fail
+bne $t1, $t4, lw_sw_fail
+bne $t2, $t5, lw_sw_fail
 jr $ra
 
 lw_sw_fail:
@@ -64,15 +64,15 @@ jr $ra
 
 test_xori:
 #initialize values
-addi $t0, $zero, 0x0000f0f0
-addi $t1, $zero, 0x00000f0f
+addi $t0, $zero, 0xf0f0
+addi $t1, $zero, 0x0f0f
 
 # xor identical things
-xori $t2, $t0, 0x0000f0f0
+xori $t2, $t0, 0xf0f0
 # fail if not zero
 bne $t2, $zero, xori_fail
 # xor different things
-xori $t2, $t1, 0X0000f0f0
+xori $t2, $t1, 0xf0f0
 # pass if zero
 bne $t2, $zero, xori_pass
 xori_fail:
