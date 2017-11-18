@@ -64,15 +64,15 @@ jr $ra
 
 test_xori:
 #initialize values
-addi $t0, $zero, 0xf0f0
-addi $t1, $zero, 0x0f0f
+addi $t0, $zero, 0xf0
+addi $t1, $zero, 0x0f
 
 # xor identical things
-xori $t2, $t0, 0xf0f0
+xori $t2, $t0, 0xf0
 # fail if not zero
 bne $t2, $zero, xori_fail
 # xor different things
-xori $t2, $t1, 0xf0f0
+xori $t2, $t1, 0xf0
 # pass if zero
 bne $t2, $zero, xori_pass
 xori_fail:
