@@ -40,7 +40,6 @@ module dataPath(
   wire  [31:0]  A, B;             // Inputs to ALU
   //wire  [31:0]  ALU_out;          // Output of ALU
   wire  [31:0]  writeback;        // Output of mem_to_reg mux
-  wire  [31:0]  Db;               // Output of regfile Db
   wire  [31:0]  mem_dout;         // Output of memory
 
   // Set up MUXes for regfile write address
@@ -48,14 +47,14 @@ module dataPath(
   assign Aw = jal ? 5'd31 : dest_reg;
 
   // Set up jal link register mux
-  assign Dw = jal ? ((PC << 2) + 32'd8) : writeback;
+  assign Dw = jal ? (PC + 32'd1) : writeback;
 
   // Set up regfile
   regfile reg_file(Da, Db, Dw, Rs, Rt, Aw, reg_wr, clk);
 
   // Set up ALU immediate/register source mux
   assign B = ALU_src ? se_ze_imm16 : Db;
-  signExtend sign_extend(B, imm16, zero_ext);
+  signExtend sign_extend(se_ze_imm16, imm16, zero_ext);
 
   // Set up ALU
   assign A = Da;

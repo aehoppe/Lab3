@@ -22,11 +22,17 @@ module dataMemory
 );
   reg [width-1:0] memory [depth-1:0];
 
-  always @(posedge clk) begin
+  always @(address) begin
+    dataOut <= memory[address];
+  end
+
+  always @(InstrAddr) begin
+    InstrOut <= memory[InstrAddr];
+  end
+
+  always @(negedge clk) begin
     if(writeEnable)
       memory[address] <= dataIn;
-    dataOut <= memory[address];
-    InstrOut <= memory[InstrAddr];
   end
 
 endmodule
