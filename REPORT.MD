@@ -17,6 +17,8 @@ Additionally, for jump and link we added two new muxes, one for choosing registe
 
 TODO: Add section about changing to negative edge for writeback
 
+<img src="clock-cycle.jpg" alt="clock-cycle" style="width:600px">
+
 
 ### Block Diagram
 
