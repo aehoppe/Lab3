@@ -44,7 +44,7 @@ Below is the table of all of the control signals for our CPU and all of the diff
 
 #### Data Path
 
-Below is the data path module, which can operate on two registers or an immediate and write its arithmetic result to memory or a register, or store the program counter (plus two instructions) in the case of a `jal`. We did make a custom module to do sign-extending or logical-extending for `xori`, since the difference is just what we extend with, zeros or the MSB. 
+Below is the data path module, which can operate on two registers or an immediate and write its arithmetic result to memory or a register, or store the program counter (plus two instructions) in the case of a `jal`. We did make a custom module to do sign-extending or logical-extending for `xori`, since the difference is just what we extend with, zeros or the MSB.
 
 <img src="img/single-cycle-cpu_DataPath.jpg" alt="data-path" style="width:600px">
 
@@ -55,8 +55,24 @@ Below is the data path module, which can operate on two registers or an immediat
 
 
 ## Test Plan
+We implemented various assembly-based tests to test our CPU and also to push our assembly programming skills. For the very basic first functionality test, we implemented `asm/add.asm` which is just a series of adds. We also implemented a complete test of our instruction set in `asm/basic_testbench.asm`, and finally we implemented the quicksort algorithm in assembly, which can be found in `asm/quicksort.asm`.
 
-### Results
+#### add.asm
+The add test was just a series of `addi` instructions to the same `$t0` register to allow us to debug our ability to load memory into our CPU and test the instruction fetch order. It actually allowed us to debug our instruction fetch bug in which instructions were taking two cycles to execute. It turned out that the instruction output of our memory was only updating `@ (address)` which was the data memory address port, so the instruction memory wasn't being output until the writeback state of a previous instruction.
+
+#### Quicksort
+
+
+#### Assembly Test Bench
+The assembly test bench was a program designed to test all of the different functions in our ISA. It has explicit test subroutines for `lw` and `sw`, `bne`, `xori`, `addi`, `add`, `sub`, and `slt`. We chose to omit tests for `j`, `jr`, and `jal` because the rest of the testbench used them so heavily that it would never complete successfully if they were not correct. Each subroutine sets a return value in a top level register, `$s7`, which is checked before executing additional subroutines. If `$s7` is set to 1, a test has failed and the program exits (falls into a jump trap loop). If at the end of the program, the `$s7` register is zero, then the testbench succeeded. The testbench ends with a MARS syscall which displays the return value in `$s7`, which successfully returned zero when run on the MARS MIPS emulator.
+
+This testbench is what is run by using the `./test.sh` script in the top level directory of the project.
+
+This testbench allowed us to debug our memory load and store issue having to do with the read-execute-write cycle happening all at the same clock cycle. Once we resolved this issue, we were met with the following result:
+
+<img src="img/test-success.png" alt="test-success" style="width:600px">
+
+As is visible here, the `$s7` register was still `0x00000000` at the time of program end. This can be seen as the `Da` bus (combinational output of the regfile) is all zeros during instruction 73 when the input address `rs` is `$s7`. This means the test bench succeeded.
 
 
 ## Performance/Area Design analysis
