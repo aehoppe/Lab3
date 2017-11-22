@@ -13,6 +13,8 @@ In order to correctly to do the new instruction xori, we needed to create a more
 
 Additionally, for jump and link we added two new muxes, one for choosing register $31 in order to do jal, and one right before the write back to the Dw port for the regfile.  This sets the PC to the value that is to be written to register $31.  For jal, the jump part is the same as a normal jump instruction.
 
+TODO: Add section about changing to negative edge for writeback
+
 
 ### Block Diagram
 
