@@ -15,7 +15,7 @@ In order to correctly to do the new instruction `xori`, we needed to create a mo
 
 Additionally, for jump and link we added two new muxes, one for choosing register `$31` in order to do `jal`, and one right before the writeback to the `Dw` port for the regfile.  This sets the PC to the value that is to be written to register `$31`.  For `jal`, the jump part is the same as a normal jump instruction.
 
-When first trying to run code on our CPU, we changed our architecture from a Harvard architecture with separate memory for instructions and data to Von Neumann architecture with one contiguous memory to be more compatible with the Mars assembler's output for MIPS. 
+When first trying to run code on our CPU, we changed our architecture from a Harvard architecture with separate memory for instructions and data to Von Neumann architecture with one contiguous memory to be more compatible with the Mars assembler's output for MIPS.
 
 While running basic tests for the first time, we were confronted with issues loading and storing data to memory. For some reason we were only executing odd-numbered instructions for a while, which was very problematic. We also were having loads and stores executing out of order.
 
@@ -29,7 +29,7 @@ This diagram has the program counter updating on the positive edge, then instruc
 
 
 ### Block Diagram
-<img src="" alt="top-level-block-diagram" style="width:600px"
+<img src="img/single-cycle-report_block-diagram.jpg" alt="top-level-block-diagram" style="width:600px"
 
 Our single-cycle CPU is divided up into two main modules, with one shared memory between all of them. This design arose because we originally
 
