@@ -29,7 +29,7 @@ This diagram has the program counter updating on the positive edge, then instruc
 
 
 ### Block Diagram
-<img src="img/single-cycle-report_block-diagram.jpg" alt="top-level-block-diagram" style="width:600px"
+<img src="img/single-cycle-report_block-diagram.jpg" alt="top-level-block-diagram" style="width:600px">
 
 Our single-cycle CPU is divided up into two main modules, with one shared memory between all of them. This design arose because we originally
 
