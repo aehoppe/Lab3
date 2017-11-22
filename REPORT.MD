@@ -15,12 +15,20 @@ In order to correctly to do the new instruction `xori`, we needed to create a mo
 
 Additionally, for jump and link we added two new muxes, one for choosing register `$31` in order to do `jal`, and one right before the writeback to the `Dw` port for the regfile.  This sets the PC to the value that is to be written to register `$31`.  For `jal`, the jump part is the same as a normal jump instruction.
 
-TODO: Add section about changing to negative edge for writeback
+While running basic tests for the first time, we were confronted with issues loading and storing data to memory. For some reason we were only executing odd-numbered instructions for a while, which was very problematic. We also were having loads and stores executing out of order.
 
-<img src="clock-cycle.jpg" alt="clock-cycle" style="width:600px">
+<img src="img/out-of-order.png" alt="out-of-order" style="width:600px">
+
+Eventually we traced this back to memory and writeback instructions being triggered `@ (posedge clk)` which was preventing instructions from being fetched properly and also preventing loads and stores from executing except for every other cycle. We solved this by establishing the single-cycle timing scheme below and enforcing it, moving memory write and writeback operations to the negative clock edge.
+
+<img src="img/clock-cycle.jpg" alt="clock-cycle" style="width:600px">
+
+This diagram has the program counter updating on the positive edge, then instructions being read from memory combinationally, decoded combinationally, ALU result being computed combinationally, and then the memory or writeback happening on negative edge. In a real single-cycle CPU we'd have to worry about timing for all of these, but for our model the combinational steps are instantaneous so this is not an issue.
 
 
 ### Block Diagram
+
+
 
 
 ### RTL Examples
