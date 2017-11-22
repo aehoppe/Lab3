@@ -31,10 +31,21 @@ This diagram has the program counter updating on the positive edge, then instruc
 ### Block Diagram
 <img src="img/single-cycle-report_block-diagram.jpg" alt="top-level-block-diagram" style="width:600px">
 
-Our single-cycle CPU is divided up into two main modules, with one shared memory between all of them. This design arose because we originally
+Our single-cycle CPU is divided up into two main modules, with one shared memory between all of them. This design arose because we originally implemented a Harvard architecture, but then pivoted to Von Neumann later down the line.
+
+#### Instruction Fetch
+Inside our instruction-fetch module we keep track of the program counter and any jump or branch signals that need to modify the PC input to instruction memory or set it to a different value.
 
 <img src="img/single-cycle-cpu_IF.jpg" alt="IF" style="width:600px">
+
+Below is the table of all of the control signals for our CPU and all of the different states they are in. In this diagram, control signals that do not matter for a particular instruction are drawn in blue, and those that are important are in red.
+
 <img src="img/single-cycle-cpu_decode.jpg" alt="decode" style="width:600px">
+
+#### Data Path
+
+Below is the data path module, which can operate on two registers or an immediate and write its arithmetic result to memory or a register, or store the program counter (plus two instructions) in the case of a `jal`. We did make a custom module to do sign-extending or logical-extending for `xori`, since the difference is just what we extend with, zeros or the MSB. 
+
 <img src="img/single-cycle-cpu_DataPath.jpg" alt="data-path" style="width:600px">
 
 
